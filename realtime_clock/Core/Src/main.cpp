@@ -36,7 +36,9 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define DS3231_ADDR 0x68
+#define DS3231_TIMEOUT		HAL_MAX_DELAY
+#define SEC_ADDR 0x00
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -64,6 +66,28 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+I2C_HandleTypeDef *ds3231_dev;
+
+uint8_t DS3231_GetRegByte(uint8_t regAddr) {
+	uint8_t val;                          //must shift 1 bit, requires by HAL I2C
+	HAL_I2C_Master_Transmit(ds3231_dev, DS3231_ADDR << 1, &regAddr, 1, DS3231_TIMEOUT);
+	HAL_I2C_Master_Receive(ds3231_dev, DS3231_ADDR << 1, &val, 1, DS3231_TIMEOUT);
+  // HAL_I2C_Mem_Write (ds3231_dev, DS3231_ADDR << 1, regAddr, I2C_MEMADD_SIZE_8BIT, uint8_t * pData, uint16_t Size, uint32_t Timeout);
+	return val;
+}
+
+void DS3231_SetRegByte(uint8_t regAddr, uint8_t val) {
+	uint8_t bytes[2] = { regAddr, val };
+	HAL_I2C_Master_Transmit(ds3231_dev, DS3231_ADDR << 1, bytes, 2, DS3231_TIMEOUT);
+  // HAL_I2C_Mem_Write (ds3231_dev, DS3231_ADDR << 1, regAddr, I2C_MEMADD_SIZE_8BIT, uint8_t * pData, uint16_t Size, uint32_t Timeout);
+}
+
+void ds3231_init(I2C_HandleTypeDef *hi2c1){
+  ds3231_dev = hi2c1;
+}
+
+ds3231_time ds3231_timenow;
+
 
 /* USER CODE END 0 */
 
@@ -83,7 +107,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  //get data
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -100,6 +124,8 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
+  ds3231_init(&hi2c1);
+  DS3231_SetRegByte(SEC_ADDR, 0x59);
 
   /* USER CODE END 2 */
 
@@ -111,6 +137,10 @@ int main(void)
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
+    ds3231_timenow.hour = DS3231_GetRegByte(uint8_t SEC_ADDR) 
+    HAL_Delay(1000);
+
+
   }
   /* USER CODE END 3 */
 }
