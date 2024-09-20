@@ -135,8 +135,7 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
-  ds3231_init(&hi2c1);
-  DS3231_SetRegByte(SEC_ADDR, 0x59);
+  
 
   /* USER CODE END 2 */
 

@@ -23,8 +23,8 @@ void ds3231::DS3231_SetRegByte(uint8_t regAddr, uint8_t val) {
   // HAL_I2C_Mem_Write (ds3231_dev, DS3231_ADDR << 1, regAddr, I2C_MEMADD_SIZE_8BIT, uint8_t * pData, uint16_t Size, uint32_t Timeout);
 }
 
-void ds3231::DS3231_GetTemp(){
-  uint8_t val, val1, val2;
+std::uint8_t ds3231::DS3231_GetTemp(){
+  std::uint8_t val, val1, val2;
   val1 = DS3231_GetRegByte(TEMP_UPPER);
   val2 = DS3231_GetRegByte(TEMP_LOWER) >> 6;
   val = val1 + val2*0.25f
@@ -36,3 +36,58 @@ void ds3231::ds3231_init(I2C_HandleTypeDef *hi2c1){
   
 }
 
+void ds3231::set_day(std::uint8_t val){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(DATE_ADDR, temp);
+}
+void ds3231::set_month(std::uint8_t val){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(MON_ADDR, temp);
+}
+void ds3231::set_year(std::uint8_t val){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(YEAR_ADDR, temp);
+}
+
+void ds3231::set_sec(std::uint8_t val){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(SEC_ADDR, temp);
+}
+void ds3231::set_min(std::uint8_t val){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(MIN_ADDR, temp);
+}
+void ds3231::set_hour(std::uint8_t val){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(HOUR_ADDR, temp);
+}
+
+std::uint8_t get_day(){
+    std::uint8_t temp  = DS3231_GetRegByte(DATE_ADDR);
+    return ((((temp & 0xf0)>>4)*10) + (temp&0xf));
+}
+
+std::uint8_t get_month(){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(HOUR_ADDR, temp);
+}
+
+std::uint8_t get_year();{
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(HOUR_ADDR, temp);
+}
+
+std::uint8_t get_sec(){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(HOUR_ADDR, temp);
+}
+
+std::uint8_t get_min(){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(HOUR_ADDR, temp);
+}
+
+std::uint8_t get_hour(){
+    std::uint8_t temp = (((val/10)<<4) | (val%10)); 
+    DS3231_SetRegByte(HOUR_ADDR, temp);
+}
