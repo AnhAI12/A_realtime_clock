@@ -5,5 +5,5 @@
 
 USER_OBJS :=
 
-LIBS :=
+LIBS := -lD:/17_Project/1.a_clock/A_realtime_clock/realtime_clock/ds3231
 

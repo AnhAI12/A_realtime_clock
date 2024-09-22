@@ -1,0 +1,6 @@
+../Lib/DS3231.cpp:10:1:DS3231::DS3231()	16	static
+../Lib/DS3231.cpp:15:1:DS3231::~DS3231()	16	static
+../Lib/DS3231.cpp:15:1:virtual DS3231::~DS3231()	16	static
+../Lib/DS3231.cpp:20:9:uint8_t DS3231::DS3231_GetRegByte(uint8_t)	32	static
+../Lib/DS3231.cpp:28:6:void DS3231::DS3231_SetRegByte(uint8_t, uint8_t)	32	static
+../Lib/DS3231.cpp:34:7:float DS3231::DS3231_GetTemp()	32	static

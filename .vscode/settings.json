@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "cstdarg": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "cstdint": "cpp"
+    }
+}

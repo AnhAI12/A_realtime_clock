@@ -9,11 +9,11 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include ds3231/subdir.mk
 -include USB_HOST/Target/subdir.mk
 -include USB_HOST/App/subdir.mk
 -include Middlewares/ST/STM32_USB_Host_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Src/subdir.mk
--include Drivers/ds3231/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -80,8 +80,8 @@ all: main-build
 main-build: Realtime_clock.elf secondary-outputs
 
 # Tool invocations
-Realtime_clock.elf Realtime_clock.map: $(OBJS) $(USER_OBJS) D:\17_Project\1.a_clock\realtime_clock\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Realtime_clock.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\17_Project\1.a_clock\realtime_clock\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Realtime_clock.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Realtime_clock.elf Realtime_clock.map: $(OBJS) $(USER_OBJS) D:\17_Project\1.a_clock\A_realtime_clock\realtime_clock\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Realtime_clock.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\17_Project\1.a_clock\A_realtime_clock\realtime_clock\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Realtime_clock.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

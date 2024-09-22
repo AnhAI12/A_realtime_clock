@@ -19,7 +19,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include <main.hpp>
 #include "usb_host.h"
-#include "ds3231.hpp"
+
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -37,11 +38,11 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define DS3231_ADDR 0x68
-// #define DS3231_TIMEOUT		HAL_MAX_DELAY
-#define SEC_ADDR 0x00
-#define TEMP_UPPER 0x11
-#define TEMP_LOWER 0x12
+// #define DS3231_ADDR 0x68
+// // #define DS3231_TIMEOUT		HAL_MAX_DELAY
+// #define SEC_ADDR 0x00
+// #define TEMP_UPPER 0x11
+// #define TEMP_LOWER 0x12
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -69,7 +70,7 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-I2C_HandleTypeDef *ds3231_dev;
+// I2C_HandleTypeDef *ds3231_dev;
 
 // uint8_t DS3231_GetRegByte(uint8_t regAddr) {
 // 	uint8_t val;                          //must shift 1 bit, requires by HAL I2C
@@ -97,7 +98,6 @@ I2C_HandleTypeDef *ds3231_dev;
 //   ds3231_dev = hi2c1;
 // }
 
-ds3231_time ds3231_timenow;
 
 
 /* USER CODE END 0 */
@@ -135,7 +135,9 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
-  
+  ds3231 ds3231_dev;
+  ds3231_dev.ds3231_init(&hi2c1);
+  float temp_val = ds3231_dev.DS3231_GetTemp();
 
   /* USER CODE END 2 */
 
@@ -147,7 +149,7 @@ int main(void)
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
-    ds3231_timenow.hour = DS3231_GetRegByte(uint8_t SEC_ADDR) 
+    temp_val = ds3231_dev.DS3231_GetTemp();
     HAL_Delay(1000);
 
 
