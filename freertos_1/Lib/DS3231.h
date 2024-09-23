@@ -9,6 +9,7 @@
 #define DS3231_H_
 
 #include "stm32f4xx_hal.h"
+extern I2C_HandleTypeDef hi2c1;
 
 #define DS3231_TIMEOUT		HAL_MAX_DELAY
 #define DS3231_ADDR 0x68
@@ -29,7 +30,8 @@
 public:
 	DS3231();
 	virtual ~DS3231();
-	void ds3231_init(I2C_HandleTypeDef *hi2c1);
+	// void ds3231_init(I2C_HandleTypeDef *hi2c1);
+	void ds3231_init();
 	float DS3231_GetTemp();
 	void DS3231_SetRegByte(uint8_t regAddr, uint8_t val);
 	uint8_t DS3231_GetRegByte(uint8_t regAddr);
