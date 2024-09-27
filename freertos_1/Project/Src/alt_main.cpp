@@ -15,6 +15,7 @@ void alt_main(){
 	float temp_val=0;
 	while(1){
 		temp_val = ds3231_dev.DS3231_GetTemp();
+		// lcd1602_Print(&lcd1602_Handle, &temp_val);
 		HAL_Delay(1000);
 	}
 }
