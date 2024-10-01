@@ -36,6 +36,7 @@ USB_HOST/App/usb_host.o: ../USB_HOST/App/usb_host.c \
  ../USB_HOST/Target/usbh_conf.h ../Core/Inc/main.h \
  D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Project/Inc/alt_main.h \
  D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/DS3231.h \
+ D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/I2C_LCD.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
@@ -80,6 +81,7 @@ USB_HOST/App/usb_host.o: ../USB_HOST/App/usb_host.c \
 ../Core/Inc/main.h:
 D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Project/Inc/alt_main.h:
 D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/DS3231.h:
+D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/I2C_LCD.h:
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h:
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h:
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:

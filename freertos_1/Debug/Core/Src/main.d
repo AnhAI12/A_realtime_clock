@@ -33,6 +33,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Project/Inc/alt_main.h \
  D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/DS3231.h \
+ D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/I2C_LCD.h \
  ../Core/Inc/i2c.h ../Core/Inc/main.h ../Core/Inc/i2s.h ../Core/Inc/spi.h \
  ../USB_HOST/App/usb_host.h ../Core/Inc/gpio.h
 ../Core/Inc/main.h:
@@ -70,6 +71,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Project/Inc/alt_main.h:
 D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/DS3231.h:
+D:/17_Project/1.a_clock/A_realtime_clock/freertos_1/Lib/I2C_LCD.h:
 ../Core/Inc/i2c.h:
 ../Core/Inc/main.h:
 ../Core/Inc/i2s.h:

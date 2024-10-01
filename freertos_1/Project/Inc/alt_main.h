@@ -13,6 +13,8 @@
 #endif
 
 #include "DS3231.h"
+#include "I2C_LCD.h"
+//#include "string"
 
 void alt_main(void);
 
